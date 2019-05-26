@@ -42,7 +42,9 @@ This is a pre made create-react-app project. View this video to see how the app 
     * if "SET_VIDEO_SCALE" should return action value
 
 
-### These components should subscribe to the store because they are showing data and they care about when it changes. Add the componentDidMount lifecycle method and subscribe to the store. 
+### Subscribers
+
+These components should subscribe to the store because they are showing data and they care about when it changes. Add the componentDidMount lifecycle method and subscribe to the store. 
   * SpecialText.js
     * setState for `text` to the store state `specialText`
   * Users.js
@@ -61,7 +63,9 @@ This is a pre made create-react-app project. View this video to see how the app 
   * Modal.js
     * setState for `isLoading` to the store state `isLoading`
 
-### These components care about changing data. Call the store dispatch function where appropriate. Send in the appropriate action message.
+### Publishers
+
+These components care about changing data. Call the store dispatch function where appropriate. Send in the appropriate action message.
   * SpecialTextBox.js
     * dispatch a message with type `SET_SPECIAL_TEXT` and value = e.target.value, in the onChange of the textbox
   * UserButtons.js
