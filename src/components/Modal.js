@@ -18,7 +18,7 @@ class LoadingModal extends React.Component {
       >
         <button onClick={
           ()=>{
-            props.setIsLoading(false);
+           
           }
           }>close</button>
         <div>Loading .......</div>

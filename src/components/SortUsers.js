@@ -6,9 +6,7 @@ function SortUsers(props) {
         Sort Users On: 
         <select onChange={
           (e)=>{
-            if(props.set){
-              props.set(e.target.value);
-            }
+           
           }
         }>
           <option value="first_name">First Name</option>

@@ -5,9 +5,7 @@ function SearchTextBox(props) {
       <div>
         Search Users on First Name:
         <input onChange={(e)=>{
-            if(props.set){
-              props.set(e.target.value);
-            }
+           
         }} />
       </div>
   );

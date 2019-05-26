@@ -5,19 +5,23 @@ Fork, clone, npm i, npm start
 ### Intro
 This is a pre made create-react-app project. View this video to see how the app should work once you are done coding. [Video](https://youtu.be/R8VFic_ZZUc). This project is for us to practice using redux to control data that is changed through user interactions. On the left hand side of the page is a collection of different inputs that are available on a web page. When the user interacts with the input it will change some data that should update the right hand side of the page. 
 
+### Store
+  * In store.js we are making the store a global variable for convience sake, so it is available everywhere.
+  * How should the components get access to the store?
 
 ###  Reducers
   * Create Reducers in reducers/index.js
   * Look at state.js and create a reducer for each piece of state
   * Remember reducers take 2 parameters: `state`, and `action`
   * Remember to give state a default value appropriate for what type it is in the reducer. Number, string, array, object
-  * Remember to return state
+  * Remember to return state by default
   * You will need to decide which reducer cares about which action message type
   * Combine reducers and export
 
 ### Make these reducers
   * currentCount
-    * if "INCREASE_COUNTER" of "DECREASE_COUNTER" should return the current count plus one or minus one, depending on the action
+    * if "INCREASE_COUNTER" it should return the current count plus
+    * if "DECREASE_COUNTER" it should return the current count minus one
   * specialText
     * if "SET_SPECIAL_TEXT" should return the action value
   * currentCity
@@ -38,42 +42,7 @@ This is a pre made create-react-app project. View this video to see how the app 
     * if "SET_VIDEO_SCALE" should return action value
 
 
-### Create Actions in actions/index.js
-  * increaseCounter()
-    * type = "INCREASE_COUNTER"
-  * decreaseCounter()
-    * type = "DECREASE_COUNTER"
-  * setSpecialText(text)
-    * type = "SET_SPECIAL_TEXT"
-    * value = text
-  * removeUser()
-    * type = "REMOVE_USER"
-  * addUser(user)
-    * type = "ADD_USER"
-    * value = user
-  * setSearchText(text)
-    * type = "SET_SEARCH_TEXT"
-    * value = text
-  * setIsLoading(isLoading)
-    * type = "SET_IS_LOADING"
-    * value = isLoading
-  * setTemp(temp)
-    * type = "SET_TEMP"
-    * value = temp
-  * setCurrentCity(city)
-    * type = "SET_CURRENT_CITY"
-    * value = city
-  * setVideoURL(URL)
-    * type = "SET_VIDEO_URL"
-    * value = URL
-  * setCurrentUserSort(sort)
-    * type = "SET_CURRENT_USER_SORT"
-    * value = sort
-  * setVideoScale(scale)
-    * type = "SET_VIDEO_SCALE"
-    * value = scale
-
-### These components should subscribe because they are showing data and they care about when it changes. Add the componentDidMount lifecycle method and subscribe to the store. 
+### These components should subscribe to the store because they are showing data and they care about when it changes. Add the componentDidMount lifecycle method and subscribe to the store. 
   * SpecialText.js
     * setState for `text` to the store state `specialText`
   * Users.js
@@ -92,51 +61,33 @@ This is a pre made create-react-app project. View this video to see how the app 
   * Modal.js
     * setState for `isLoading` to the store state `isLoading`
 
-### Create these Containers that care about changing the data
-  * Import the connect function from react-redux
-  * create mapDispatchToProps
-  * connect the component so that it becomes a container
-  * export container
-  * SpecialTextBoxContainer.js
-    * import `setSpecialText` action
-    * map prop `set` to action `setSpecialText`
-  * UserButtonsContainer.js
-    * import `addUser` and `removeUser` action
-    * map prop `add` to action `addUser`
-    * map prop `remove` to action `removeUser`
-  * CityDropDownContainer.js
-    * import `setCurrentCity` action
-    * map prop `set` to action `setCurrentCity`
-  * CounterButtonContainer.js
-    * import the increaseCounter and decreaseCounter actions
-    * map prop `increase` to action `increaseCounter`
-    * map prop `decrease` to action `decreaseCounter`
-  * SearchTextBoxContainer.js
-    * import `setSearchText` action
-    * map prop `set` to action `setSearchText`
-  * ChangeTemperatureContainer.js
-    * import `setTemp` action
-    * map prop `set` to action `setTemp`
-  * VideoTextBoxContainer.js
-    * import `setVideoURL` action
-    * map prop `set` to action `setVideoURL`
-  * SortUsersContainer.js
-    * import `setCurrentUserSort` action
-    * map prop `set` to action `setCurrentUserSort`
-  * ScaleVideoContainer.js
-    * import `setVideoScale` action
-    * map prop `set` to action `setVideoScale`
-  * ShowModalContainer.js
-    * import `setIsLoading` action
-    * map prop `setIsLoading` to action `setIsLoading`Show
-  * ModalContainer.js
-    * import `setIsLoading` action
-    * map prop `setIsLoading` to action `setIsLoading`
+### These components care about changing data. Call the store dispatch function where appropriate. Send in the appropriate action message.
+  * SpecialTextBox.js
+    * dispatch a message with type `SET_SPECIAL_TEXT` and value = e.target.value, in the onChange of the textbox
+  * UserButtons.js
+    * dispatch a message with type `ADD_USER` vand value = user, in the onClick of the Add button
+    * dispatch a message with type `REMOVE_USER` in the onClick of the Remove button
+  * CityDropDown.js
+   * dispatch a message with type `SET_CURRENT_CITY` and value = e.target.value, in the onChange of the select
+  * CounterButton.js
+    * dispatch a message with type `INCREASE_COUNTER` in the onClick of the Increase button
+    * dispatch a message with type `DECREASE_COUNT` in the onClick of the Decrease button
+  * SearchTextBox.js
+    * dispatch a message with type `SET_SEARCH_TEXT` and value = e.target.value,  in the onChange of the textbox
+  * ChangeTemperature.js
+    * dispatch a message with type `SET_TEMP` and value = e.target.value, in the onChange of the input
+  * VideoTextBox.js
+    * dispatch a message with type `SET_VIDEO_URL` and value = e.target.value, in the onChange of the input
+  * SortUsers.js
+    * dispatch a message with type `SET_CURRENT_USER_SORT` and value = e.target.value, in the onChange of the select
+  * ScaleVideo.js
+    * dispatch a message with type `SET_VIDEO_SCALE` and value = e.target.value, in the onChange of the input
+  * ShowModal.js
+    * dispatch a message with type `SET_IS_LOADING` and value = true in the onClick of the button
+  * Modal.js
+    * dispatch a message with type `SET_IS_LOADING` and value = false in the onClick of the button
 
-### App
-  * Change App.js
-  * Use containers instead of components
-  * Basically, just add the word Container everywhere a component is referenced
+
 
 ### Bonus - fetch
 Currently, the users are hard coded in the state.js file. How could we change this so that the data is coming from an api. https://jsonplaceholder.typicode.com/users

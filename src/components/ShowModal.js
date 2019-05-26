@@ -5,9 +5,7 @@ function ShowModal(props) {
       <div>
         <button onClick={
           ()=>{
-            if(props.setIsLoading){
-              props.setIsLoading(true);
-            }
+            
           }
         }>Show Modal</button>
 
