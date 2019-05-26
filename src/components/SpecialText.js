@@ -1,9 +1,6 @@
 import React from 'react';
 
 class SpecialText extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   state={text:""}
   render() {
     const {

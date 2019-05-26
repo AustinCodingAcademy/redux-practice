@@ -6,8 +6,8 @@ Fork, clone, npm i, npm start
 This is a pre made create-react-app project. View this video to see how the app should work once you are done coding. [Video](https://youtu.be/R8VFic_ZZUc). This project is for us to practice using redux to control data that is changed through user interactions. On the left hand side of the page is a collection of different inputs that are available on a web page. When the user interacts with the input it will change some data that should update the right hand side of the page. 
 
 ### Store
-  * In store.js we are making the store a global variable for convience sake, so it is available everywhere.
-  * How should the components get access to the store?
+  * In store.js we are creating the store and exporting it for anyone to use.
+  * Import store into any component that needs it.
 
 ###  Reducers
   * Create Reducers in reducers/index.js

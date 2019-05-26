@@ -4,4 +4,4 @@ import reducers from "./reducers";
 
 var store = createStore(reducers,state);
 
-window.store = store;
+export default store;
