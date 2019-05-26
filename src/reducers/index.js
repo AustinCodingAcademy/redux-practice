@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 
 function currentCount(state=0, action){
   if(action.type === "INCREASE_COUNTER"){
-    
+
   }
   if(action.type === "DECREASE_COUNTER"){
     
