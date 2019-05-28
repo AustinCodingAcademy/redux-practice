@@ -69,7 +69,7 @@ These components care about changing data. Call the store dispatch function wher
   * SpecialTextBox.js
     * dispatch a message with type `SET_SPECIAL_TEXT` and value = e.target.value, in the onChange of the textbox
   * UserButtons.js
-    * dispatch a message with type `ADD_USER` vand value = user, in the onClick of the Add button
+    * dispatch a message with type `ADD_USER` and value = user, in the onClick of the Add button
     * dispatch a message with type `REMOVE_USER` in the onClick of the Remove button
   * CityDropDown.js
    * dispatch a message with type `SET_CURRENT_CITY` and value = e.target.value, in the onChange of the select
