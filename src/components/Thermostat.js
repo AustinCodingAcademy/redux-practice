@@ -1,8 +1,16 @@
 import React from "react";
 import DonutChart from "./ignore/DonutChart";
+import store from '../store';
 
 class Thermostat extends React.Component {
   state={temp:""}
+
+  componentDidMount() {
+    store.subscribe(() => {
+      let temp = store.getState().currentTemp;
+      this.setState({temp});
+    })
+  }
 
   render() {
     const {
