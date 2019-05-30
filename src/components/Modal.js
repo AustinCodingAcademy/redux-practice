@@ -9,8 +9,9 @@ class LoadingModal extends React.Component {
 
   componentDidMount() {
     store.subscribe(() => {
+      console.log(store.getState().isLoading);
       let isLoading = store.getState().isLoading;
-      this.setState({isLoading});
+      this.setState({isLoading: isLoading});
     })
   }
 
@@ -21,7 +22,7 @@ class LoadingModal extends React.Component {
 
     return (
       <Modal
-        isOpen={props.isLoading}
+        isOpen={this.state.isLoading}
         style={customStyles}
         contentLabel="Example Modal"
       >
