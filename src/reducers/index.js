@@ -40,7 +40,14 @@ function currentCity(state = "", action) {
 }
 
 function currentTemp(state='', action) {
-  if(action.type === 'SET_CURRENT_TEMP') {
+  if(action.type === 'SET_TEMP') {
+    return action.value;
+  }
+  return state;
+}
+
+function isLoading(state=false, action) {
+  if(action.type === 'SET_IS_LOADING') {
     return action.value;
   }
   return state;
@@ -51,5 +58,6 @@ export default combineReducers({
   users,
   specialText,
   currentCity,
-  currentTemp
+  currentTemp,
+  isLoading
 })

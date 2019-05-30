@@ -9,7 +9,7 @@ function ChangeTemperature(props){
           <input onChange={(e)=>{
             let value = e.target.value;
             let message = {
-              type: 'SET_CURRENT_TEMP',
+              type: 'SET_TEMP',
               value: value
             }
             store.dispatch(message);
