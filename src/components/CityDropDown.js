@@ -1,4 +1,5 @@
 import React from 'react';
+import store from '../store';
 
 function CityDropDown(props) {
   return (
@@ -6,7 +7,12 @@ function CityDropDown(props) {
         CurrentCity: 
         <select onChange={
           (e)=>{
-           
+            let value = e.target.value;
+            let message = {
+              type: 'SET_CURRENT_CITY',
+              value: value
+            }
+            store.dispatch(message)
           }
         }>
           <option value="Austin">Austin</option>

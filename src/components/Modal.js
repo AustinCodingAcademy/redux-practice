@@ -1,10 +1,20 @@
 import React from 'react';
 import Modal from 'react-modal';
+import store from '../store';
 
 class LoadingModal extends React.Component {
   state={
     isLoading:false
   }
+
+  componentDidMount() {
+    store.subscribe(() => {
+      console.log(store.getState().isLoading);
+      let isLoading = store.getState().isLoading;
+      this.setState({isLoading: isLoading});
+    })
+  }
+
   render() {
     const {
       props,
@@ -12,13 +22,17 @@ class LoadingModal extends React.Component {
 
     return (
       <Modal
-        isOpen={props.isLoading}
+        isOpen={this.state.isLoading}
         style={customStyles}
         contentLabel="Example Modal"
       >
         <button onClick={
           ()=>{
-           
+            let message = {
+              type: 'SET_IS_LOADING',
+              value: false
+            }
+            store.dispatch(message)
           }
           }>close</button>
         <div>Loading .......</div>
