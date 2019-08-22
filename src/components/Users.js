@@ -1,4 +1,5 @@
 import React from 'react';
+import store from '../store';
 
 class Users extends React.Component {
  
@@ -6,6 +7,14 @@ class Users extends React.Component {
     users:[],
     sortOn:"",
     firstNameFilter:""
+  }
+
+  componentDidMount() {
+    store.subscribe(()=>{
+      this.setState({users: store.getState().users});
+      this.setState({firstNameFilter: store.getState().searchText});
+      this.setState({sortOn: store.getState().currentUserSort})
+    })
   }
 
   render() {

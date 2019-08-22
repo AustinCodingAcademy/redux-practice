@@ -1,10 +1,18 @@
 import React from 'react';
 import Modal from 'react-modal';
+import store from '../store'
 
 class LoadingModal extends React.Component {
   state={
     isLoading:false
   }
+
+  componentDidMount() {
+    store.subscribe(()=> {
+      this.setState({isLoading: store.getState().isLoading})
+    });
+  }
+
   render() {
     const {
       props,
