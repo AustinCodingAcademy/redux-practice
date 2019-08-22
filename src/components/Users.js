@@ -10,6 +10,7 @@ class Users extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({users: store.getState().users})
     store.subscribe(()=>{
       this.setState({users: store.getState().users});
       this.setState({firstNameFilter: store.getState().searchText});
