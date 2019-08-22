@@ -1,4 +1,5 @@
 import React from 'react';
+import store from '../store';
 
 function CounterButton(props) {
   return (
