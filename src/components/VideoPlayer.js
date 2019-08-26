@@ -1,18 +1,23 @@
 import React from 'react';
+import store from "../store";
 
 class VideoPlayer extends React.Component {
   state={scale:0,URL:""}
 
-  render() {
-    const {
-      props,
-    } = this;
+  componentDidMount(){
+    store.subscribe(()=>{
+      const videoURL = store.getState().videoURL;
+      const videoScale = store.getState().videoScale;
+      this.setState({URL:videoURL,scale:videoScale});
+    });
+  }
 
+  render() {
     let width = 200;
     let height = 200;
     if(this.state.scale){
-      width = 200 * props.scale;
-      height = 200 * props.scale;
+      width = 200 * this.state.scale;
+      height = 200 * this.state.scale;
     }
     return (
         <div><iframe title="YouTube video player"  type="text/html" 
