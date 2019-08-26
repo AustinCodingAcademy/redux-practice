@@ -6,12 +6,12 @@ function CounterButton(props) {
       <div>
         <button onClick={
           ()=>{
-            
+            store.dispatch({type:"INCREASE_COUNTER"})
           }
         }>Increase Counter By One</button>
         <button onClick={
           ()=>{
-           
+            store.dispatch({type:"DECREASE_COUNTER"})
           }
         }>Decrease Counter By One</button>
       </div>
