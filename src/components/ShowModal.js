@@ -2,14 +2,14 @@ import React from 'react';
 
 function ShowModal(props) {
   return (
-      <div>
-        <button onClick={
-          ()=>{
-            
-          }
-        }>Show Modal</button>
+    <div>
+      <button onClick={
+        () => {
+          store.dispatch({ type: "SET_IS_LOADING", value: true })
+        }
+      }>Show Modal</button>
 
-      </div>
+    </div>
   );
 }
 export default ShowModal;
