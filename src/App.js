@@ -16,9 +16,21 @@ import SortUsers from "./components/SortUsers";
 import ScaleVideo from "./components/ScaleVideo";
 import Modal from "./components/Modal";
 import ShowModal from "./components/ShowModal";
+import store from "./store";
 
-function App() {
-  return (
+class App extends React.Component {
+  
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users ') 
+      .then(res => res.json())
+      .then(data => {
+        store.dispatch({type: "LOAD_USERS", value: data})
+      })
+        .catch(err => console.log(`Error: ${err}`))
+  }
+
+  render() {
+    return (
       <div className="App">
         <div className="container">
           <CounterButton />
@@ -28,7 +40,7 @@ function App() {
           <UserButtons />
           <br />
           <CityDropDown />
-           <br />
+            <br />
           <ChangeTemperature />
           <br />
           <SearchTextBox />
@@ -60,6 +72,7 @@ function App() {
         </div>
         <Modal />
       </div>
-  );
+    );
+  }
 }
 export default App;

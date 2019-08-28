@@ -17,6 +17,9 @@ function users(state =[], action){
   if(action.type === "REMOVE_USER"){
     return state.slice(1)
   }
+  if(action.type === "LOAD_USERS"){
+    return action.value;
+  }
   return state;
 }
 
