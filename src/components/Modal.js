@@ -1,24 +1,30 @@
 import React from 'react';
 import Modal from 'react-modal';
+import store from '../store';
 
 class LoadingModal extends React.Component {
   state={
     isLoading:false
   }
-  render() {
-    const {
-      props,
-    } = this;
 
+  componentDidMount(){
+    store.subscribe(()=>{
+      this.setState({
+        isLoading: store.getState().isLoading
+      });
+    });
+  }
+
+  render() {
     return (
       <Modal
-        isOpen={props.isLoading}
+        isOpen={this.state.isLoading}
         style={customStyles}
         contentLabel="Example Modal"
       >
         <button onClick={
           ()=>{
-           
+           store.dispatch({type:"SET_IS_LOADING", value: false})
           }
           }>close</button>
         <div>Loading .......</div>

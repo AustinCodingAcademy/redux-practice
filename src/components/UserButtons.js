@@ -1,4 +1,5 @@
 import React from 'react';
+import store from "../store";
 
 function UserButtons(props) {
   return (
@@ -13,12 +14,12 @@ function UserButtons(props) {
                 "occupation": "father",
                 "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg"
               };
-            
+              store.dispatch({type:"ADD_USER", value: user})
           }
         }>Add User</button>
         <button onClick={
           ()=>{
-           
+            store.dispatch({type:"REMOVE_USER"})
           }
         }>Remove User</button>
       </div>

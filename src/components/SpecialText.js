@@ -1,12 +1,18 @@
 import React from 'react';
+import store from '../store';
 
 class SpecialText extends React.Component {
   state={text:""}
-  render() {
-    const {
-      props,
-    } = this;
 
+  componentDidMount(){
+    store.subscribe(()=>{
+      this.setState({
+        text: store.getState().specialText
+      });
+    });
+  }
+
+  render() {
     return (
         <div>
           Special Text: {this.state.text}
