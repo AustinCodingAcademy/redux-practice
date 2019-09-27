@@ -1,7 +1,17 @@
 import React from 'react';
+import store from '../store';
 
 class VideoPlayer extends React.Component {
   state={scale:0,URL:""}
+
+  componentDidMount() {
+    store.subscribe(()=>{
+      this.setState({
+        URL: store.getState().videoURL,
+        scale: store.getState().videoScale
+      })
+    })
+  }
 
   render() {
     const {
